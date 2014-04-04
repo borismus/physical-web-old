@@ -6,6 +6,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -27,11 +28,18 @@ public class NearbyDeviceManager {
   private int REQUEST_ENABLE_BT = 0;
   private Timer mExpireTimer;
   private Timer mSearchTimer;
+  private Handler mQueryHandler;
   private boolean mIsSearching = false;
 
   private NearbyDeviceAdapter mNearbyDeviceAdapter;
   private OnNearbyDeviceChangeListener mListener;
+  private ArrayList<NearbyDevice> mDeviceBatchList;
 
+  private Activity mActivity;
+
+  private boolean mIsQueuing = false;
+  // How often we should batch requests for metadata.
+  private int QUERY_PERIOD = 500;
   // How often to search for new devices (ms).
   private int SEARCH_PERIOD = 5000;
   // How often to check for expired devices.
@@ -40,7 +48,7 @@ public class NearbyDeviceManager {
   // we declare it gone.
   public static int MAX_INACTIVE_TIME = 10000;
 
-  /**
+    /**
    * The public interface of this class follows:
    */
   NearbyDeviceManager(Activity activity) {
@@ -57,9 +65,12 @@ public class NearbyDeviceManager {
       activity.startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
     }
 
+    mDeviceBatchList = new ArrayList<NearbyDevice>();
     mNearbyDeviceAdapter = new NearbyDeviceAdapter(activity);
+    mQueryHandler = new Handler();
     mSearchTimer = new Timer();
     mExpireTimer = new Timer();
+    mActivity = activity;
   }
 
   /**
@@ -82,7 +93,6 @@ public class NearbyDeviceManager {
 
     // Start a timer to do scans.
     mSearchTimer.scheduleAtFixedRate(mSearchTask, 0, SEARCH_PERIOD);
-
     // Start a timer to check for expired devices.
     mExpireTimer.scheduleAtFixedRate(mExpireTask, 0, EXPIRE_PERIOD);
   }
@@ -129,19 +139,46 @@ public class NearbyDeviceManager {
     }
   };
 
+
+  private Runnable mBatchMetadataRunnable = new Runnable () {
+    @Override
+    public void run() {
+        batchFetchMetaData();
+        mIsQueuing = false;
+    }
+  };
+
+  private void batchFetchMetaData() {
+     if(mDeviceBatchList.size() > 0) {
+         MetadataResolver resolver = new MetadataResolver(mActivity);
+         resolver.getBatchMetadata(mDeviceBatchList);
+         mDeviceBatchList = new ArrayList<NearbyDevice>(); // Clear out the list
+     }
+  }
+
+
   // NearbyDevice scan callback.
   private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
     @Override
     public void onLeScan(final BluetoothDevice device, final int RSSI, byte[] scanRecord) {
+
+      // We need to collate these.
+
       Log.i(TAG, String.format("onLeScan: %s, RSSI: %d", device.getName(), RSSI));
       assert mListener != null;
 
       NearbyDevice nearbyDevice = mNearbyDeviceAdapter.getNearbyDevice(device);
       // Check if this is a new device.
       if (nearbyDevice == null) {
-        nearbyDevice = new NearbyDevice(device, RSSI);
+        nearbyDevice = new NearbyDevice(device, mActivity, RSSI);
         if (nearbyDevice.isBroadcastingUrl()) {
-          nearbyDevice.downloadMetadata();
+          if(mIsQueuing == false) {
+              mIsQueuing = true;
+              // We wait QUERY_PERIODms to see if any other devices are discovered so we can batch
+              mQueryHandler.postAtTime(mBatchMetadataRunnable, QUERY_PERIOD);
+          }
+          // Add the device to the queue of devices to look for
+          mDeviceBatchList.add(nearbyDevice);
           mNearbyDeviceAdapter.addDevice(nearbyDevice);
           mListener.onDeviceFound(nearbyDevice);
         }
