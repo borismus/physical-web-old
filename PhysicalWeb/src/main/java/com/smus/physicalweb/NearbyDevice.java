@@ -31,9 +31,11 @@ public class NearbyDevice implements MetadataResolver.OnMetadataListener {
   }
 
   // Constructor for testing purposes only.
-  public NearbyDevice(String url) {
+  public NearbyDevice(String url, Activity activity, int RSSI) {
     mUrl = url;
     mLastSeen = System.nanoTime();
+    mActivity = activity;
+    mLastRSSI = RSSI;
   }
 
   public void setAdapter(NearbyDeviceAdapter adapter) {
@@ -80,9 +82,5 @@ public class NearbyDevice implements MetadataResolver.OnMetadataListener {
 
   public boolean isBroadcastingUrl() {
     return mUrl != null;
-  }
-
-  public boolean equalsBluetooth(BluetoothDevice bluetoothDevice) {
-    return mBluetoothDevice.equals(bluetoothDevice);
   }
 }

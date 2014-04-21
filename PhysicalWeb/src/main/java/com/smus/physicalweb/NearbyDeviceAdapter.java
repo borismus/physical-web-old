@@ -1,7 +1,6 @@
 package com.smus.physicalweb;
 
 import android.app.Activity;
-import android.bluetooth.BluetoothDevice;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -9,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * Created by smus on 1/24/14.
@@ -75,9 +76,9 @@ public class NearbyDeviceAdapter extends BaseAdapter {
     });
   }
 
-  public NearbyDevice getNearbyDevice(BluetoothDevice bluetoothDevice) {
+  public NearbyDevice getExistingDevice(NearbyDevice candidateDevice) {
     for (NearbyDevice device : mNearbyDevices) {
-      if (device.equalsBluetooth(bluetoothDevice)) {
+      if (device.getUrl().equals(candidateDevice.getUrl())) {
         return device;
       }
     }
@@ -114,4 +115,20 @@ public class NearbyDeviceAdapter extends BaseAdapter {
       }
     });
   }
+
+  @Override
+  public void notifyDataSetChanged() {
+    // Sort the adapter by RSSI values.
+    Collections.sort(mNearbyDevices, mRssiComparator);
+
+    super.notifyDataSetChanged();
+  }
+
+  private Comparator<NearbyDevice> mRssiComparator = new Comparator<NearbyDevice>() {
+    @Override
+    public int compare(NearbyDevice lhs, NearbyDevice rhs) {
+      return rhs.getLastRSSI() - lhs.getLastRSSI();
+    }
+  };
+
 }

@@ -17,7 +17,6 @@ public class MainActivity extends Activity implements NearbyDeviceManager.OnNear
   private String TAG = "MainActivity";
 
   private NearbyDeviceManager mDeviceManager;
-  private NearbyDevice mMockDevice = new NearbyDevice("http://z3.ca/1");
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +58,12 @@ public class MainActivity extends Activity implements NearbyDeviceManager.OnNear
         mDeviceManager.scanDebug();
         return true;
       case R.id.action_debug:
-        NearbyDevice device = new NearbyDevice("http://z3.ca/1");
-        mDeviceManager.getAdapter().addDevice(device);
-        device.downloadMetadata();
+        NearbyDevice device = new NearbyDevice("http://z3.ca/1", this, -60);
+        mDeviceManager.foundDeviceDebug(device);
         return true;
       case R.id.action_debug2:
-        device = new NearbyDevice("http://z3.ca/2");
-        mDeviceManager.getAdapter().addDevice(device);
-        device.downloadMetadata();
+        device = new NearbyDevice("http://z3.ca/2", this, -80);
+        mDeviceManager.foundDeviceDebug(device);
         return true;
     }
     return super.onOptionsItemSelected(item);

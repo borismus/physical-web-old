@@ -33,6 +33,8 @@ public class NearbyDeviceManager {
 
   private NearbyDeviceAdapter mNearbyDeviceAdapter;
   private OnNearbyDeviceChangeListener mListener;
+
+  //
   private ArrayList<NearbyDevice> mDeviceBatchList;
 
   private Activity mActivity;
@@ -48,7 +50,7 @@ public class NearbyDeviceManager {
   // we declare it gone.
   public static int MAX_INACTIVE_TIME = 10000;
 
-    /**
+  /**
    * The public interface of this class follows:
    */
   NearbyDeviceManager(Activity activity) {
@@ -115,6 +117,10 @@ public class NearbyDeviceManager {
     mSearchTask.run();
   }
 
+  public void foundDeviceDebug(NearbyDevice debugDevice) {
+    handleDeviceFound(debugDevice);
+  }
+
   /**
    * Private methods follow:
    */
@@ -143,17 +149,17 @@ public class NearbyDeviceManager {
   private Runnable mBatchMetadataRunnable = new Runnable () {
     @Override
     public void run() {
-        batchFetchMetaData();
-        mIsQueuing = false;
+      batchFetchMetaData();
+      mIsQueuing = false;
     }
   };
 
   private void batchFetchMetaData() {
-     if(mDeviceBatchList.size() > 0) {
-         MetadataResolver resolver = new MetadataResolver(mActivity);
-         resolver.getBatchMetadata(mDeviceBatchList);
-         mDeviceBatchList = new ArrayList<NearbyDevice>(); // Clear out the list
-     }
+    if(mDeviceBatchList.size() > 0) {
+      MetadataResolver resolver = new MetadataResolver(mActivity);
+      resolver.getBatchMetadata(mDeviceBatchList);
+      mDeviceBatchList = new ArrayList<NearbyDevice>(); // Clear out the list
+    }
   }
 
 
@@ -161,31 +167,36 @@ public class NearbyDeviceManager {
   private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
     @Override
     public void onLeScan(final BluetoothDevice device, final int RSSI, byte[] scanRecord) {
-
-      // We need to collate these.
-
       Log.i(TAG, String.format("onLeScan: %s, RSSI: %d", device.getName(), RSSI));
       assert mListener != null;
 
-      NearbyDevice nearbyDevice = mNearbyDeviceAdapter.getNearbyDevice(device);
-      // Check if this is a new device.
-      if (nearbyDevice == null) {
-        nearbyDevice = new NearbyDevice(device, mActivity, RSSI);
-        if (nearbyDevice.isBroadcastingUrl()) {
-          if(mIsQueuing == false) {
-              mIsQueuing = true;
-              // We wait QUERY_PERIODms to see if any other devices are discovered so we can batch
-              mQueryHandler.postAtTime(mBatchMetadataRunnable, QUERY_PERIOD);
-          }
-          // Add the device to the queue of devices to look for
-          mDeviceBatchList.add(nearbyDevice);
-          mNearbyDeviceAdapter.addDevice(nearbyDevice);
-          mListener.onDeviceFound(nearbyDevice);
-        }
-      } else {
-        nearbyDevice.updateLastSeen(RSSI);
-        mNearbyDeviceAdapter.updateListUI();
-      }
+      NearbyDevice candidateNearbyDevice = new NearbyDevice(device, mActivity, RSSI);
+      handleDeviceFound(candidateNearbyDevice);
     }
   };
+
+  private void handleDeviceFound(NearbyDevice candidateNearbyDevice) {
+    NearbyDevice nearbyDevice = mNearbyDeviceAdapter.getExistingDevice(candidateNearbyDevice);
+
+    // Check if this is a new device.
+    if (nearbyDevice != null) {
+      // For existing devices, update their RSSI.
+      nearbyDevice.updateLastSeen(candidateNearbyDevice.getLastRSSI());
+      mNearbyDeviceAdapter.updateListUI();
+    } else {
+      // For new devices, add the device to the adapter.
+      nearbyDevice = candidateNearbyDevice;
+      if (nearbyDevice.isBroadcastingUrl()) {
+        if (!mIsQueuing) {
+          mIsQueuing = true;
+          // We wait QUERY_PERIOD ms to see if any other devices are discovered so we can batch.
+          mQueryHandler.postAtTime(mBatchMetadataRunnable, QUERY_PERIOD);
+        }
+        // Add the device to the queue of devices to look for.
+        mDeviceBatchList.add(nearbyDevice);
+        mNearbyDeviceAdapter.addDevice(nearbyDevice);
+        mListener.onDeviceFound(nearbyDevice);
+      }
+    }
+  }
 }
