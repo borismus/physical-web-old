@@ -26,19 +26,22 @@ public class MetadataResolver {
   String TAG = "MetadataResolver";
   String METADATA_URL = "http://url-caster.appspot.com/resolve-scan";
 
-  Map<String, String> mDeviceUrlMap;
-  private RequestQueue mRequestQueue;
-  private String url;
+  static Map<String, String> mDeviceUrlMap;
+
+  // Only need one request queue for the whole app.
+  private static RequestQueue mRequestQueue;
 
   MetadataResolver(Context context) {
     mDeviceUrlMap = new HashMap<String, String>();
     mDeviceUrlMap.put("OLP425-ECF5", "http://z3.ca/light");
     mDeviceUrlMap.put("OLP425-ECB5", "http://z3.ca/1");
 
-    mRequestQueue = Volley.newRequestQueue(context);
+    if (mRequestQueue == null) {
+      mRequestQueue = Volley.newRequestQueue(context);
+    }
   }
 
-  public String getURLForDevice(NearbyDevice device) {
+  public static String getURLForDevice(NearbyDevice device) {
     // If the device name is already a URL, use it.
     String deviceName = device.getName();
     String url = deviceName;
@@ -146,6 +149,7 @@ public class MetadataResolver {
 
           @Override
           public void onErrorResponse(VolleyError volleyError) {
+            Log.i(TAG, "VolleyError: " + volleyError.toString());
             return;
           }
         }

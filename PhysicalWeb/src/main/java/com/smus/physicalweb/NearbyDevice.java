@@ -1,7 +1,9 @@
 package com.smus.physicalweb;
 
 import android.bluetooth.BluetoothDevice;
-import android.app.Activity;
+import android.util.Log;
+
+import java.util.ArrayList;
 
 /**
  * Represents a nearby device.
@@ -13,36 +15,50 @@ public class NearbyDevice implements MetadataResolver.OnMetadataListener {
   String TAG = "NearbyDevice";
 
   private BluetoothDevice mBluetoothDevice;
-  private long mLastSeen;
-  private int mLastRSSI;
+
   private DeviceMetadata mDeviceMetadata;
   private String mUrl;
   private NearbyDeviceAdapter mAdapter;
-  private Activity mActivity;
 
-  public NearbyDevice(BluetoothDevice bluetoothDevice, Activity activity, int RSSI) {
+  private int HISTORY_LENGTH = 3;
+  private ArrayList<Integer> mRSSIHistory;
+  private long mLastSeen;
+
+
+  public NearbyDevice(BluetoothDevice bluetoothDevice, int RSSI) {
     mBluetoothDevice = bluetoothDevice;
-    mLastRSSI = RSSI;
-    mLastSeen = System.nanoTime();
-    mActivity = activity;
-
-    MetadataResolver resolver = new MetadataResolver(activity);
-    mUrl = resolver.getURLForDevice(this);
+    String url = MetadataResolver.getURLForDevice(this);
+    initialize(url, RSSI);
   }
 
   // Constructor for testing purposes only.
-  public NearbyDevice(String url, Activity activity, int RSSI) {
+  public NearbyDevice(String url, int RSSI) {
+    initialize(url, RSSI);
+  }
+
+  private void initialize(String url, int RSSI) {
     mUrl = url;
     mLastSeen = System.nanoTime();
-    mActivity = activity;
-    mLastRSSI = RSSI;
+
+    mRSSIHistory = new ArrayList<Integer>();
+    mRSSIHistory.add(RSSI);
   }
 
   public void setAdapter(NearbyDeviceAdapter adapter) {
     mAdapter = adapter;
   }
 
-  public int getLastRSSI() { return mLastRSSI; }
+  public int getLastRSSI() { return mRSSIHistory.get(mRSSIHistory.size() - 1); }
+
+  public int getAverageRSSI() {
+    Log.i(TAG, "getAverageRSSI. Elements: " + mRSSIHistory.size());
+    int sum = 0;
+    for (int rssi : mRSSIHistory) {
+      sum += rssi;
+    }
+    return sum/mRSSIHistory.size();
+  }
+
   public DeviceMetadata getInfo() { return mDeviceMetadata; }
   public String getUrl() { return mUrl; }
   public String getName() {
@@ -55,21 +71,16 @@ public class NearbyDevice implements MetadataResolver.OnMetadataListener {
 
   public void updateLastSeen(int RSSI) {
     mLastSeen = System.nanoTime();
-    mLastRSSI = RSSI;
+
+    if (mRSSIHistory.size() >= HISTORY_LENGTH) {
+      mRSSIHistory.remove(0);
+    }
+    mRSSIHistory.add(RSSI);
   }
 
   public boolean isLastSeenAfter(long threshold) {
     long notSeenMs = (System.nanoTime() - mLastSeen) / 1000000;
     return notSeenMs > threshold;
-  }
-
-  public boolean downloadMetadata() {
-    MetadataResolver resolver = new MetadataResolver(mActivity);
-    if (mUrl == null) {
-      return false;
-    }
-    resolver.getMetadata(this);
-    return true;
   }
 
   @Override

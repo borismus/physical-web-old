@@ -58,12 +58,22 @@ public class MainActivity extends Activity implements NearbyDeviceManager.OnNear
         mDeviceManager.scanDebug();
         return true;
       case R.id.action_debug:
-        NearbyDevice device = new NearbyDevice("http://z3.ca/1", this, -60);
+        NearbyDevice device = new NearbyDevice("http://z3.ca/1", -60);
         mDeviceManager.foundDeviceDebug(device);
         return true;
       case R.id.action_debug2:
-        device = new NearbyDevice("http://z3.ca/2", this, -80);
+        device = new NearbyDevice("http://z3.ca/2", -80);
         mDeviceManager.foundDeviceDebug(device);
+        return true;
+      case R.id.action_debug3:
+        mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/1", -81));
+        mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/2", -82));
+        mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/3", -83));
+        mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/4", -84));
+        mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/5", -85));
+        mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/6", -86));
+        mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/7", -87));
+        mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/8", -88));
         return true;
     }
     return super.onOptionsItemSelected(item);
@@ -72,7 +82,6 @@ public class MainActivity extends Activity implements NearbyDeviceManager.OnNear
   @Override
   public void onDeviceFound(NearbyDevice device) {
     Log.i(TAG, "Found a device: " + device.getName());
-    mDeviceManager.getAdapter().updateListUI();
   }
 
   @Override

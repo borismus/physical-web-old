@@ -1,15 +1,14 @@
 package com.smus.physicalweb;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 /**
  * Created by smus on 1/24/14.
@@ -20,6 +19,11 @@ public class NearbyDeviceAdapter extends BaseAdapter {
 
   private ArrayList<NearbyDevice> mNearbyDevices;
   private Activity mActivity;
+
+  private long mLastChangeRequestTime = 0;
+  private Timer mNotificationTimer;
+
+  private long NOTIFY_DELAY = 300;
 
   NearbyDeviceAdapter(Activity activity) {
     mNearbyDevices = new ArrayList<NearbyDevice>();
@@ -61,6 +65,8 @@ public class NearbyDeviceAdapter extends BaseAdapter {
 
       ImageView iconView = (ImageView) view.findViewById(R.id.icon);
       iconView.setImageBitmap(deviceMetadata.icon);
+    } else {
+      Log.i(TAG, String.format("Device with URL %s has no metadata.", device.getUrl()));
     }
     return view;
   }
@@ -71,7 +77,7 @@ public class NearbyDeviceAdapter extends BaseAdapter {
       public void run() {
         mNearbyDevices.add(device);
         device.setAdapter(NearbyDeviceAdapter.this);
-        notifyDataSetChanged();
+        queueChangedNotification();
       }
     });
   }
@@ -100,7 +106,7 @@ public class NearbyDeviceAdapter extends BaseAdapter {
         @Override
         public void run() {
           mNearbyDevices.remove(device);
-          notifyDataSetChanged();
+          queueChangedNotification();
         }
       });
     }
@@ -111,23 +117,59 @@ public class NearbyDeviceAdapter extends BaseAdapter {
     mActivity.runOnUiThread(new Runnable() {
       @Override
       public void run() {
-        notifyDataSetChanged();
+        queueChangedNotification();
       }
     });
   }
 
+  public void queueChangedNotification() {
+    long now = System.currentTimeMillis();
+    // If a notification was recently issued, create a pending notification.
+    if (now - mLastChangeRequestTime < NOTIFY_DELAY) {
+      // Ignore if there's a pending timer already.
+      if (mNotificationTimer != null) {
+        Log.i(TAG, "queueChangedNotification: Timer already exists.");
+        return;
+      }
+      Log.i(TAG, "queueChangedNotification: Scheduling timer.");
+      mNotificationTimer = new Timer();
+      mNotificationTimer.schedule(new TimerTask() {
+        @Override
+        public void run() {
+          mActivity.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+              notifyDataSetChanged();
+            }
+          });
+        }
+      }, new Date(now + NOTIFY_DELAY));
+    } else {
+      // Otherwise, if there's no active timer, notify immediately.
+      Log.i(TAG, "queueChangedNotification: Immediately notifying.");
+      notifyDataSetChanged();
+    }
+  }
+
   @Override
   public void notifyDataSetChanged() {
-    // Sort the adapter by RSSI values.
+    Log.i(TAG, "queueChangedNotification: notifyDataSetChanged");
     Collections.sort(mNearbyDevices, mRssiComparator);
 
     super.notifyDataSetChanged();
+
+    // Cancel the pending notification timer if there is one.
+    if (mNotificationTimer != null) {
+      mNotificationTimer.cancel();
+      mNotificationTimer = null;
+    }
+    mLastChangeRequestTime = System.currentTimeMillis();
   }
 
   private Comparator<NearbyDevice> mRssiComparator = new Comparator<NearbyDevice>() {
     @Override
     public int compare(NearbyDevice lhs, NearbyDevice rhs) {
-      return rhs.getLastRSSI() - lhs.getLastRSSI();
+      return rhs.getAverageRSSI() - lhs.getAverageRSSI();
     }
   };
 

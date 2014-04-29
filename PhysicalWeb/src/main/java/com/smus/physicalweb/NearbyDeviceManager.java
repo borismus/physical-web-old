@@ -170,7 +170,7 @@ public class NearbyDeviceManager {
       Log.i(TAG, String.format("onLeScan: %s, RSSI: %d", device.getName(), RSSI));
       assert mListener != null;
 
-      NearbyDevice candidateNearbyDevice = new NearbyDevice(device, mActivity, RSSI);
+      NearbyDevice candidateNearbyDevice = new NearbyDevice(device, RSSI);
       handleDeviceFound(candidateNearbyDevice);
     }
   };
