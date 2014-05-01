@@ -60,10 +60,17 @@ public class NearbyDevice implements MetadataResolver.OnMetadataListener {
   }
 
   public DeviceMetadata getInfo() { return mDeviceMetadata; }
+
   public String getUrl() { return mUrl; }
+
   public String getName() {
     if (mBluetoothDevice != null) {
-      return mBluetoothDevice.getName();
+      String name = mBluetoothDevice.getName();
+      if (name != null) {
+        return name;
+      } else {
+        return "No device name";
+      }
     } else {
       return mUrl;
     }

@@ -20,18 +20,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Static class for resolving metadata.
+ *
  * Created by smus on 1/24/14.
  */
 public class MetadataResolver {
-  String TAG = "MetadataResolver";
-  String METADATA_URL = "http://url-caster.appspot.com/resolve-scan";
+  static String TAG = "MetadataResolver";
+  static String METADATA_URL = "http://url-caster.appspot.com/resolve-scan";
 
   static Map<String, String> mDeviceUrlMap;
 
   // Only need one request queue for the whole app.
-  private static RequestQueue mRequestQueue;
+  static RequestQueue mRequestQueue;
 
-  MetadataResolver(Context context) {
+  static boolean mIsInitialized = false;
+
+
+  public static void initialize(Context context) {
     mDeviceUrlMap = new HashMap<String, String>();
     mDeviceUrlMap.put("OLP425-ECF5", "http://z3.ca/light");
     mDeviceUrlMap.put("OLP425-ECB5", "http://z3.ca/1");
@@ -39,9 +44,16 @@ public class MetadataResolver {
     if (mRequestQueue == null) {
       mRequestQueue = Volley.newRequestQueue(context);
     }
+
+    mIsInitialized = true;
   }
 
   public static String getURLForDevice(NearbyDevice device) {
+    if (!mIsInitialized) {
+      Log.e(TAG, "Not initialized.");
+      return null;
+    }
+
     // If the device name is already a URL, use it.
     String deviceName = device.getName();
     String url = deviceName;
@@ -58,12 +70,17 @@ public class MetadataResolver {
     return url;
   }
 
-  public void getBatchMetadata(ArrayList<NearbyDevice> mDeviceBatchList) {
+  public static void getBatchMetadata(ArrayList<NearbyDevice> mDeviceBatchList) {
+    if (!mIsInitialized) {
+      Log.e(TAG, "Not initialized.");
+      return;
+    }
+
     JSONObject jsonObj = createRequestObject(mDeviceBatchList);
 
     HashMap<String, NearbyDevice> deviceMap = new HashMap<String, NearbyDevice>();
 
-    for(int dIdx = 0; dIdx < mDeviceBatchList.size(); dIdx++) {
+    for (int dIdx = 0; dIdx < mDeviceBatchList.size(); dIdx++) {
       NearbyDevice nearbyDevice = mDeviceBatchList.get(dIdx);
       deviceMap.put(nearbyDevice.getUrl(), nearbyDevice);
     }
@@ -72,17 +89,9 @@ public class MetadataResolver {
 
     // Queue the request
     mRequestQueue.add(jsObjRequest);
-
   }
 
-  public void getMetadata(NearbyDevice device) {
-    ArrayList<NearbyDevice> devices = new ArrayList<NearbyDevice>();
-    devices.add(device);
-
-    getBatchMetadata(devices);
-  }
-
-  private JsonObjectRequest createMetadataRequest(JSONObject jsonObj, final HashMap<String, NearbyDevice> deviceMap) {
+  private static JsonObjectRequest createMetadataRequest(JSONObject jsonObj, final HashMap<String, NearbyDevice> deviceMap) {
     return new JsonObjectRequest(
         METADATA_URL,
         jsonObj,
@@ -107,7 +116,7 @@ public class MetadataResolver {
                 if (deviceData.has("title")) {
                   title = deviceData.getString("title");
                 }
-                if(deviceData.has("url")) {
+                if (deviceData.has("url")) {
                   url = deviceData.getString("url");
                 }
                 if (deviceData.has("description")) {
@@ -141,8 +150,6 @@ public class MetadataResolver {
             } catch (JSONException e) {
               e.printStackTrace();
             }
-
-            return;
           }
         },
         new Response.ErrorListener() {
@@ -150,13 +157,12 @@ public class MetadataResolver {
           @Override
           public void onErrorResponse(VolleyError volleyError) {
             Log.i(TAG, "VolleyError: " + volleyError.toString());
-            return;
           }
         }
     );
   }
 
-  private JSONObject createRequestObject(ArrayList<NearbyDevice> devices) {
+  private static JSONObject createRequestObject(ArrayList<NearbyDevice> devices) {
     JSONObject jsonObj = new JSONObject();
 
     try {
@@ -179,10 +185,9 @@ public class MetadataResolver {
       location.put("lon", 120.38142);
 
       jsonObj.put("location",  location);
-      jsonObj.put("objects", (Object) urlArray);
+      jsonObj.put("objects", urlArray);
 
-    }
-    catch(JSONException ex) {
+    } catch (JSONException ex) {
 
     }
     return jsonObj;
@@ -194,7 +199,7 @@ public class MetadataResolver {
    * @param metadata
    * @param listener
    */
-  public void downloadIcon(final DeviceMetadata metadata, final OnMetadataListener listener) {
+  private static void downloadIcon(final DeviceMetadata metadata, final OnMetadataListener listener) {
     ImageRequest imageRequest = new ImageRequest(metadata.iconUrl, new Response.Listener<Bitmap>() {
       @Override
       public void onResponse(Bitmap response) {

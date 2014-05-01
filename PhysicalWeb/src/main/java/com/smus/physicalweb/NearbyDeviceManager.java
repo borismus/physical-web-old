@@ -156,8 +156,7 @@ public class NearbyDeviceManager {
 
   private void batchFetchMetaData() {
     if(mDeviceBatchList.size() > 0) {
-      MetadataResolver resolver = new MetadataResolver(mActivity);
-      resolver.getBatchMetadata(mDeviceBatchList);
+      MetadataResolver.getBatchMetadata(mDeviceBatchList);
       mDeviceBatchList = new ArrayList<NearbyDevice>(); // Clear out the list
     }
   }
