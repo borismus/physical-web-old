@@ -24,11 +24,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="009e057e-41ca-4bb1-a115-f4ac744534d4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/PhysicalApplication.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhysicalWeb/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/PhysicalWeb/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/DeviceMetadata.java" afterPath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/DeviceMetadata.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MainActivity.java" afterPath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MetadataResolver.java" afterPath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MetadataResolver.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDevice.java" afterPath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDevice.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceAdapter.java" afterPath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceAdapter.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceManager.java" afterPath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/PhysicalApplication.java" afterPath="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/PhysicalApplication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="physical-web.iws" />
@@ -96,9 +98,11 @@
       <file leaf-file-name="NearbyDevice.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDevice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="541" max-vertical-offset="1515">
-              <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1755">
+              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#3027#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -106,27 +110,78 @@
       <file leaf-file-name="NearbyDeviceAdapter.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="430" max-vertical-offset="2205">
-              <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2445">
+              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#5675#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MetadataResolver.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="NearbyDeviceManager.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2910">
+              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#6769#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PhysicalApplication.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/PhysicalApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2781457" vertical-offset="0" max-vertical-offset="755">
+              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#909#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MetadataResolver.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MetadataResolver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60240966" vertical-offset="315" max-vertical-offset="3345">
-              <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3585">
+              <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
               <folding>
+                <element signature="e#0#7511#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#2327#2349#0" expanded="true" />
-                <element signature="e#2901#5212#0" expanded="true" />
-                <element signature="e#5201#5202#0" expanded="true" />
-                <element signature="e#5222#5426#0" expanded="true" />
-                <element signature="e#5415#5416#0" expanded="true" />
-                <element signature="e#6480#6726#0" expanded="true" />
-                <element signature="e#6719#6720#0" expanded="true" />
+                <element signature="e#2942#2964#0" expanded="true" />
+                <element signature="e#3516#5827#0" expanded="true" />
+                <element signature="e#5816#5817#0" expanded="true" />
+                <element signature="e#5837#6041#0" expanded="true" />
+                <element signature="e#6030#6031#0" expanded="true" />
+                <element signature="e#7095#7341#0" expanded="true" />
+                <element signature="e#7334#7335#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeviceMetadata.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/DeviceMetadata.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="540">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#874#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1920">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#5017#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -750,13 +805,14 @@
         <option value="$PROJECT_DIR$/PhysicalWeb/src/main/res/layout/listitem_device.xml" />
         <option value="$PROJECT_DIR$/PhysicalWeb/src/main/res/layout/fragment_main.xml" />
         <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/RingBuffer.java" />
-        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MainActivity.java" />
-        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceAdapter.java" />
-        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDevice.java" />
-        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/PhysicalApplication.java" />
         <option value="$PROJECT_DIR$/PhysicalWeb/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceManager.java" />
+        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/DeviceMetadata.java" />
+        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MainActivity.java" />
         <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MetadataResolver.java" />
+        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDevice.java" />
+        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceAdapter.java" />
+        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceManager.java" />
+        <option value="$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/PhysicalApplication.java" />
       </list>
     </option>
   </component>
@@ -819,8 +875,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -997,6 +1051,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1065,19 +1121,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -1103,6 +1146,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -1222,7 +1278,6 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32822478" sideWeight="0.4993036" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42911878" sideWeight="0.56337047" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5095785" sideWeight="0.43593314" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1237,13 +1292,14 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22214484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22214484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3293872" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32822478" sideWeight="0.4993036" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1251,15 +1307,15 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5095785" sideWeight="0.43593314" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22214484" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32934928" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1272,8 +1328,8 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.4993036" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32822478" sideWeight="0.68941504" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -1318,7 +1374,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#6769#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1351,7 +1409,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#6769#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1384,7 +1444,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#6769#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1402,7 +1464,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#6769#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1420,7 +1484,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#6769#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1438,7 +1504,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#6769#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1488,13 +1556,6 @@
       </provider>
     </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/sdk/sources/android-19/android/bluetooth/BluetoothAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/DeviceMetadata.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1645,19 +1706,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4725537" vertical-offset="642" max-vertical-offset="1740">
-          <caret line="68" column="82" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
-          <folding>
-            <element signature="e#2961#2962#0" expanded="false" />
-            <element signature="e#3020#3021#0" expanded="false" />
-            <element signature="e#3083#3084#0" expanded="false" />
-            <element signature="e#3141#3142#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/sdk/sources/android-19/java/util/Queue.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42720765" vertical-offset="2431" max-vertical-offset="2850">
@@ -1669,15 +1717,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25104603" vertical-offset="0" max-vertical-offset="717">
           <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/PhysicalApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39379475" vertical-offset="0" max-vertical-offset="419">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1689,43 +1728,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceManager.java">
+    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/DeviceMetadata.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5180723" vertical-offset="1797" max-vertical-offset="2670">
-          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="755">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#874#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDevice.java">
+    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="541" max-vertical-offset="1515">
-          <caret line="71" column="30" selection-start-line="71" selection-start-column="30" selection-end-line="71" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1315" max-vertical-offset="2205">
-          <caret line="98" column="29" selection-start-line="98" selection-start-column="29" selection-end-line="98" selection-end-column="29" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1920">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="14" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#5017#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/MetadataResolver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60240966" vertical-offset="315" max-vertical-offset="3345">
-          <caret line="41" column="47" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3585">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
           <folding>
+            <element signature="e#0#7511#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#2327#2349#0" expanded="true" />
-            <element signature="e#2901#5212#0" expanded="true" />
-            <element signature="e#5201#5202#0" expanded="true" />
-            <element signature="e#5222#5426#0" expanded="true" />
-            <element signature="e#5415#5416#0" expanded="true" />
-            <element signature="e#6480#6726#0" expanded="true" />
-            <element signature="e#6719#6720#0" expanded="true" />
+            <element signature="e#2942#2964#0" expanded="true" />
+            <element signature="e#3516#5827#0" expanded="true" />
+            <element signature="e#5816#5817#0" expanded="true" />
+            <element signature="e#5837#6041#0" expanded="true" />
+            <element signature="e#6030#6031#0" expanded="true" />
+            <element signature="e#7095#7341#0" expanded="true" />
+            <element signature="e#7334#7335#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDevice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1755">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#3027#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2445">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#5675#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/NearbyDeviceManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2910">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#6769#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PhysicalWeb/src/main/java/com/smus/physicalweb/PhysicalApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2781457" vertical-offset="0" max-vertical-offset="755">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#909#0" expanded="true" />
           </folding>
         </state>
       </provider>
