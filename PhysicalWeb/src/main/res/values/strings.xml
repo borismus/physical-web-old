@@ -7,6 +7,7 @@
     <string name="action_scan">Scan</string>
     <string name="action_debug">Debug (z3.ca/1)</string>
     <string name="action_debug2">Debug (z3.ca/2)</string>
-    <string name="action_debug3">Debug (stress test)</string>
+    <string name="action_debug3">Debug (z3.ca/3)</string>
+    <string name="action_debug4">Debug (stress test)</string>
 
 </resources>

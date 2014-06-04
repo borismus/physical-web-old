@@ -82,6 +82,10 @@ public class MainActivity extends Activity implements NearbyDeviceManager.OnNear
         mDeviceManager.foundDeviceDebug(device);
         return true;
       case R.id.action_debug3:
+        device = new NearbyDevice("http://jenson.org/iot/1", -80);
+        mDeviceManager.foundDeviceDebug(device);
+        return true;
+      case R.id.action_debug4:
         mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/1", -81));
         mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/2", -82));
         mDeviceManager.foundDeviceDebug(new NearbyDevice("http://jenson.org/iot/3", -83));

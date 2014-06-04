@@ -138,11 +138,12 @@ public class MetadataResolver {
                 if (deviceData.has("description")) {
                   description = deviceData.getString("description");
                 }
-                if (deviceData.has("favicon_url")) {
+                if (deviceData.has("icon")) {
                   // We might need to do some magic here.
-                  iconUrl = deviceData.getString("favicon_url");
+                  iconUrl = deviceData.getString("icon");
                 }
 
+                // TODO(smus): Eliminate this fallback since we expect the server to always return an icon.
                 // Provisions for a favicon specified as a relative URL.
                 if (!iconUrl.startsWith("http")) {
                   // Lets just assume we are dealing with a relative path.
