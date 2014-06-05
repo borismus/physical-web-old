@@ -31,3 +31,5 @@ local.properties
 *.ipr
 *~
 *.swp
+
+.DS_Store
