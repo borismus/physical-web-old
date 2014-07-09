@@ -1,4 +1,4 @@
-Physical Web
+Physical Web Android Prototype
 ============
 
-Making it happen!!
+Project has moved to <https://github.com/scottjenson/physical-web>.
